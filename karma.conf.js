@@ -18,6 +18,7 @@ module.exports = function (config) {
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/login-app'),
       reports: ['html', 'lcovonly', 'text-summary'],
+      preprocessors: { '*.js': ['coverage'] },
       fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],
