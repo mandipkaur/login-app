@@ -1,14 +1,46 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import{RouterModule,Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+const appRoutes:Routes = [
+ {
+    path: 'login',
+    component: LoginComponent 
+ },
+ {
+   path: 'dashboard',
+   component: DashboardComponent
+ },
+ {
+   path: '',
+   pathMatch: 'full',
+   redirectTo: '/login'
+ },
+ {
+   path: '**',
+   redirectTo: 'login'
+ }
+  
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HeaderComponent,
+    DashboardComponent
+    
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
