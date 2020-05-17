@@ -15,6 +15,7 @@ export class LoginPage {
       loginBtn: element.all(by.css(' app-login button')),
       invalidUName: element.all(by.className('.invalid-user')),
       invalidPwrd: element.all(by.className('.invalid-password')),
+      errorMessage: element.all(by.css('app-login span'))
     };
   }
   addCredentials = (user:string,password:string) => {
@@ -30,8 +31,6 @@ export class LoginPage {
     return element(by.css('[name="user"]')).getAttribute('value');
   }
   getErrorMessage = ()=>{
-      return element.all(by.className('.alert-danger'));
+      return element.all(by.css('.error-message'));
   }
-  
-  
 }

@@ -7,4 +7,7 @@ export class DashboardPage {
   getDashboardText(): Promise<string> {
     return element(by.css('app-dashboard  h1')).getText() as Promise<string>;
   }
+  getDashboard() {
+    return element(by.css('app-dashboard  h1'));
+  }
 }

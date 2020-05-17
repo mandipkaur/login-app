@@ -1,14 +1,14 @@
 import { DashboardPage } from './dashboard.po';
 import { browser, logging } from 'protractor';
 
-describe('workspace-project App', () => {
+describe('DashboardComponent', () => {
   let page: DashboardPage;
 
   beforeEach(() => {
     page = new DashboardPage();
   });
 
-  it('should display header component with title text', () => {
+  it('should display dashboard page with message', () => {
     page.navigateTo();
     expect(page.getDashboardText()).toEqual('This is my Dashboard');
   });

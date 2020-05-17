@@ -15,6 +15,7 @@ describe('LoginComponent', () => {
   let mockRouter = {
     navigate: jasmine.createSpy('navigate')
   }
+  const error = 'Invalid Credentails.Please enter valid username or password.';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -112,7 +113,7 @@ describe('LoginComponent', () => {
         password: testUser.password
       });
       component.onLogin();
-      expect(component.error).toEqual('Invalid Credentails.Please enter valid username or password');
+      expect(component.error).toEqual(error);
     });
     it('should reset error message to null if user cerdentails is valid',()=>{
       expect(component.error).toEqual(null);

@@ -1,7 +1,7 @@
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
-describe('workspace-project App', () => {
+describe('App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -11,6 +11,10 @@ describe('workspace-project App', () => {
   it('should display header component with title text', () => {
     page.navigateTo();
     expect(page.getTitleText()).toEqual('LoginApp');
+  });
+  it('should display login component', () => {
+    page.navigateTo();
+    expect(page.getLoginComp().isDisplayed()).toBeTruthy();
   });
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser

@@ -19,4 +19,7 @@ export class AppPage {
   getTitleText(): Promise<string> {
     return element(by.css('app-root app-header h2')).getText() as Promise<string>;
   }
+  getLoginComp() {
+    return element(by.css('app-root app-login'));
+  }
 }
