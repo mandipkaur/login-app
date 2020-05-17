@@ -1,15 +1,14 @@
 <div class="container">
-    <app-header></app-header>
     <div class="row login-container" >
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
             <div class="form-group">
                 <div class="row  login-input"> 
-                    <input class="form-control" type="text"  formControlName="user" placeholder="Username"/>
-                    <span class="alert-danger" *ngIf="!loginForm.get('user').valid && loginForm.get('user').touched">Please enter username</span>
+                    <input class="form-control" type="text"  formControlName="user" placeholder="Username" name="user"/>
+                    <span class="alert-danger invalid-user" *ngIf="!loginForm.get('user').valid && loginForm.get('user').touched">Please enter username</span>
                 </div>
                 <div class="row login-input"> 
-                    <input class="form-control" type="password" formControlName="password" placeholder="Password"/>
-                    <span class="alert-danger" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Please enter username</span>
+                    <input class="form-control" type="password" formControlName="password" placeholder="Password" name="password"/>
+                    <span class="alert-danger invalid-user" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Please enter username</span>
                 </div>
         
             </div>

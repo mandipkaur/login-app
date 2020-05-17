@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      'user':new FormControl('',Validators.required),
-      'password': new FormControl('',Validators.required)
+      'user':new FormControl('',[Validators.required]),
+      'password': new FormControl('',[Validators.required])
     }
     );
   }
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     }
     else {
         console.log('Invalid user set error');
-        this.error = "Invalid Credentails.Please enter valid username or password";
+        this.error = "Invalid Credentails.Please enter valid username or password.";
     }
   }
 
