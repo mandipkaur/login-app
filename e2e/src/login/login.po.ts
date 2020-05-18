@@ -5,8 +5,8 @@ export class LoginPage {
     return browser.get(browser.baseUrl) as Promise<unknown>;
   }
 
-  getPageElts = ()=> {
-    let navElts = element.all(by.css('app-login div'));
+  getPageElts = () => {
+    const navElts = element.all(by.css('app-login div'));
 
     return {
       navElts: navElts.get(0),
@@ -18,7 +18,7 @@ export class LoginPage {
       errorMessage: element.all(by.css('app-login span'))
     };
   }
-  addCredentials = (user:string,password:string) => {
+  addCredentials = (user: string, password: string) => {
       element(by.css('[name="user"]')).sendKeys(user);
       element(by.css('[name="password"]')).sendKeys(password);
       element(by.css('.btn-primary')).click();
@@ -30,7 +30,7 @@ export class LoginPage {
   getPassword = () => {
     return element(by.css('[name="user"]')).getAttribute('value');
   }
-  getErrorMessage = ()=>{
+  getErrorMessage = () => {
       return element.all(by.css('.error-message'));
   }
 }

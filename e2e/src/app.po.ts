@@ -7,8 +7,8 @@ export class AppPage {
 
   getBaseUrl() {
     let publicUrl;
-    browser.wait(()=>{
-        browser.getCurrentUrl().then((url)=>{
+    browser.wait(() => {
+        browser.getCurrentUrl().then((url) => {
             publicUrl = url;
             return publicUrl;
         });

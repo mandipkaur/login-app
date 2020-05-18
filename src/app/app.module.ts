@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import{RouterModule,Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -9,14 +9,14 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './core/auth-guard';
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
  {
     path: 'login',
-    component: LoginComponent 
+    component: LoginComponent
  },
  {
    path: 'dashboard',
-   canActivate:[AuthGuard],
+   canActivate: [AuthGuard],
    component: DashboardComponent
  },
  {
@@ -28,7 +28,7 @@ const appRoutes:Routes = [
    path: '**',
    redirectTo: 'login'
  }
-  
+
 ];
 
 @NgModule({
@@ -37,7 +37,7 @@ const appRoutes:Routes = [
     LoginComponent,
     HeaderComponent,
     DashboardComponent
-    
+
   ],
   imports: [
     BrowserModule,

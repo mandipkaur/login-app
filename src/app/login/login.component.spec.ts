@@ -10,25 +10,25 @@ import { ValidateService } from '../shared/validate.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
-  let debugElement:DebugElement;
-  let validateService:ValidateService;
+  let debugElement: DebugElement;
+  let validateService: ValidateService;
   let fixture: ComponentFixture<LoginComponent>;
-  let testUser = { user:'Testuser',password:'password'};
-  let authenticatedUser = { user:'mandip',password:'Nagarr0'};
-  let mockRouter = {
+  const testUser = { user: 'Testuser', password: 'password'};
+  const authenticatedUser = { user: 'mandip', password: 'Nagarr0'};
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
-  }
-  class MockValidateService {
-    authentcateUser = (name,password)=>{
-    }
   };
+  class MockValidateService {
+    authentcateUser = (name, password) => {
+    }
+  }
 
   const error = 'Invalid Credentails.Please enter valid username or password.';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports:[
+      imports: [
         RouterTestingModule,
         ReactiveFormsModule
       ],
@@ -36,7 +36,7 @@ describe('LoginComponent', () => {
         { provide: Router, useValue: mockRouter},
         { provide: ValidateService, useClass: MockValidateService }
       ],
-      schemas:[CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -61,27 +61,27 @@ describe('LoginComponent', () => {
     it('should add required validator to form items, form invalid if user and password is missing', () => {
       component.ngOnInit();
       component.loginForm.setValue({
-        user:"",
-        password:""
+        user: '',
+        password: ''
       });
       expect(component.loginForm.status).toBe('INVALID');
     });
   });
-  //****  onLogin method testcases ***//
+  // ****  onLogin method testcases ***//
   describe('onLogin', () => {
-    it('should call authenticateUser() with username and password ',()=>{
+    it('should call authenticateUser() with username and password ', () => {
       fixture.detectChanges();
-      spyOn(validateService,'authentcateUser');
+      spyOn(validateService, 'authentcateUser');
       component.loginForm.setValue({
         user: testUser.user,
         password: testUser.password
       });
       component.onLogin();
-      expect(validateService.authentcateUser).toHaveBeenCalledWith(testUser.user,testUser.password);
+      expect(validateService.authentcateUser).toHaveBeenCalledWith(testUser.user, testUser.password);
     });
-    it('should navigate to dashboard if user is authenticated i.e valid',()=>{
+    it('should navigate to dashboard if user is authenticated i.e valid', () => {
       fixture.detectChanges();
-      spyOn(validateService,'authentcateUser').and.returnValue(true);
+      spyOn(validateService, 'authentcateUser').and.returnValue(true);
       component.loginForm.setValue({
         user: authenticatedUser.user,
         password: authenticatedUser.password
@@ -89,8 +89,8 @@ describe('LoginComponent', () => {
       component.onLogin();
       expect (mockRouter.navigate).toHaveBeenCalledWith (['/dashboard']);
     });
-    it('should not navigate to dashboard if user is not  authenticated i.e invalid',()=>{
-      spyOn(validateService,'authentcateUser').and.returnValue(false);
+    it('should not navigate to dashboard if user is not  authenticated i.e invalid', () => {
+      spyOn(validateService, 'authentcateUser').and.returnValue(false);
       component.loginForm.setValue({
         user: testUser.user,
         password: testUser.password
@@ -98,9 +98,9 @@ describe('LoginComponent', () => {
       component.onLogin();
       expect (mockRouter.navigate).not.toHaveBeenCalledWith('/dashboard');
     });
-    it('should display error message "Invalid Credentails" if  cerdentails are not of authenticed user',()=>{
+    it('should display error message "Invalid Credentails" if  cerdentails are not of authenticed user', () => {
       expect(component.error).toEqual(null);
-      spyOn(validateService,'authentcateUser').and.returnValue(false);
+      spyOn(validateService, 'authentcateUser').and.returnValue(false);
       component.loginForm.setValue({
         user: testUser.user,
         password: testUser.password
@@ -108,9 +108,9 @@ describe('LoginComponent', () => {
       component.onLogin();
       expect(component.error).toEqual(error);
     });
-    it('should reset error message to null if user cerdentails is valid',()=>{
+    it('should reset error message to null if user cerdentails is valid', () => {
       expect(component.error).toEqual(null);
-      spyOn(validateService,'authentcateUser').and.returnValue(true);
+      spyOn(validateService, 'authentcateUser').and.returnValue(true);
       component.loginForm.setValue({
         user: authenticatedUser.user,
         password: authenticatedUser.password

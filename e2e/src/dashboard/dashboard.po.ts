@@ -8,9 +8,9 @@ export class DashboardPage {
   };
 
   navigateTo() {
-    let logInPage = new LoginPage();
-    logInPage.addCredentials(this.mockUser.user,this.mockUser.password);
-    //return browser.get('/dashboard') as Promise<unknown>;
+    const logInPage = new LoginPage();
+    logInPage.addCredentials(this.mockUser.user, this.mockUser.password);
+    // return browser.get('/dashboard') as Promise<unknown>;
   }
   getDashboardText(): Promise<string> {
     return element(by.css('app-dashboard  h1')).getText() as Promise<string>;

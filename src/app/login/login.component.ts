@@ -13,36 +13,36 @@ import { ValidateService } from '../shared/validate.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm:FormGroup;
-  error:string = null;
+  loginForm: FormGroup;
+  error: string = null;
 
-  constructor(private router:Router,private validateService:ValidateService) { }
+  constructor(private router: Router, private validateService: ValidateService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      'user':new FormControl('',[Validators.required]),
-      'password': new FormControl('',[Validators.required])
+      user: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     }
     );
     localStorage.clear();
   }
   /**
    * OnLogin()
-   * to authenticate user 
+   * to authenticate user
    */
   onLogin = () => {
     console.log('Inside onLogin method,calling authentcateUser method');
-    const isValid = this.validateService.authentcateUser(this.loginForm.value.user,this.loginForm.value.password);
-    if(isValid){
+    const isValid = this.validateService.authentcateUser(this.loginForm.value.user, this.loginForm.value.password);
+    if (isValid){
         console.log('This is a valid user,navigate');
-        localStorage.setItem('isValidUser',JSON.stringify(true));
+        localStorage.setItem('isValidUser', JSON.stringify(true));
         this.router.navigate(['/dashboard']);
         this.error = null;
     }
     else {
-        localStorage.setItem('isValidUser',JSON.stringify(false));
+        localStorage.setItem('isValidUser', JSON.stringify(false));
         console.log('Invalid user set error');
-        this.error = "Invalid Credentails.Please enter valid username or password.";
+        this.error = 'Invalid Credentails.Please enter valid username or password.';
     }
   }
 
