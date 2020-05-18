@@ -3,7 +3,7 @@ import { ValidateService } from "./validate.service";
 describe('ValidateService', () => {
   let validateService: ValidateService;
   let testUser = { user:'Testuser',password:'password'};
-  let authenticatedUser = { user:'mandip',password:'Naggar0'};
+  let authenticatedUser = { user:'mandip',password:'Nagarr0'};
 
   beforeEach(() => {
     validateService = new ValidateService();

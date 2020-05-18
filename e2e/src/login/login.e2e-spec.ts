@@ -12,7 +12,7 @@ describe('LoginComponent', () => {
   };
   const mockUser = {
       user: 'mandip',
-      password: 'Naggar0'
+      password: 'Nagarr0'
   }
 
   beforeEach(() => {

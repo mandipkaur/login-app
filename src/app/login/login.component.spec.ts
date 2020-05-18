@@ -14,7 +14,7 @@ describe('LoginComponent', () => {
   let validateService:ValidateService;
   let fixture: ComponentFixture<LoginComponent>;
   let testUser = { user:'Testuser',password:'password'};
-  let authenticatedUser = { user:'mandip',password:'Naggar0'};
+  let authenticatedUser = { user:'mandip',password:'Nagarr0'};
   let mockRouter = {
     navigate: jasmine.createSpy('navigate')
   }

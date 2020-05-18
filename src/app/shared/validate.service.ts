@@ -6,7 +6,7 @@ import {Injectable } from '@angular/core';
 export class ValidateService {
   dummyUser ={
     user:'mandip',
-    password:'Naggar0'
+    password:'Nagarr0'
   };
   /**
    * authentcateUser()

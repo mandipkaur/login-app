@@ -8,7 +8,7 @@ describe('DashboardComponent', () => {
     page = new DashboardPage();
   });
 
-  it('should display dashboard page with message', () => {
+  it('should display dashboard page with message', async() => {
     page.navigateTo();
     expect(page.getDashboardText()).toEqual('This is my Dashboard');
   });
